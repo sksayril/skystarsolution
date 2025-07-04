@@ -38,6 +38,10 @@
     animation: scroll-left 30s linear infinite;
   }
 
+  .animate-scroll-right {
+    animation: scroll-right 30s linear infinite;
+  }
+
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
@@ -365,6 +369,15 @@
   }
   100% {
     transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
 

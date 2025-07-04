@@ -1,11 +1,13 @@
 import React from 'react';
-import { ArrowRight, Brain, Zap, Globe, Users, CheckCircle, Star, Award, TrendingUp } from 'lucide-react';
+import { ArrowRight, Brain, Zap, Globe, Users, CheckCircle, Star, Award, TrendingUp, ShieldCheck, Code2, Smartphone, ServerCog } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import TechnologyCarousel from '../components/TechnologyCarousel';
 import FloatingElements from '../components/FloatingElements';
 import { useInView } from '../components/useInView';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import TentacleBackground from '../components/TentacleBackground';
+import TechRotator from '../components/TechRotator';
+import ClientCarousel from '../components/ClientCarousel';
 
 const timelineSteps = [
   {
@@ -40,9 +42,9 @@ const timelineSteps = [
     title: 'Testing & Optimization',
     description: 'Rigorous testing, performance optimization, and fine-tuning to ensure optimal AI model performance.',
     details: ['Performance Testing', 'Model Optimization', 'Security Validation', 'User Acceptance Testing'],
-    icon: TrendingUp,
+    icon: ShieldCheck,
     position: 'right',
-    gradient: 'premium-gradient-purple',
+    gradient: 'premium-gradient-blue',
   },
   {
     phase: '05',
@@ -65,10 +67,31 @@ const Home = () => {
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="mb-12">
-            <div className="inline-flex items-center px-6 py-3 glass-morphism rounded-full text-gray-700 text-sm font-medium mb-8 shadow-lg">
-              <Zap className="h-5 w-5 mr-3 text-gradient" />
-              Next-Generation AI Solutions
-            </div>
+            {/* Glowing badge with centered thunder icon */}
+            <motion.div 
+              className="relative flex flex-col items-center justify-center px-4 py-2 mb-8 mx-auto rounded-2xl shadow-lg max-w-md"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              style={{ background: 'rgba(220, 220, 255, 0.55)', boxShadow: '0 0 32px 0 rgba(120, 100, 255, 0.18)' }}
+            >
+              {/* Glowing animated background */}
+              <span className="absolute inset-0 rounded-full z-0 animate-pulse-glow" style={{ boxShadow: '0 0 32px 8px #a78bfa, 0 0 64px 16px #818cf8' }}></span>
+              {/* Centered thunder icon with glow */}
+              <motion.span
+                className="z-10 flex items-center justify-center mb-2"
+                initial={{ scale: 1 }}
+                animate={{ scale: [1, 1.2, 1], filter: [
+                  'drop-shadow(0 0 8px #a78bfa)',
+                  'drop-shadow(0 0 16px #818cf8)',
+                  'drop-shadow(0 0 8px #a78bfa)'] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
+                <Zap className="h-8 w-8 text-gradient" />
+              </motion.span>
+              {/* Text below icon */}
+              <span className="z-10 text-gray-700 text-lg font-semibold tracking-wide">Next-Generation AI Solutions</span>
+            </motion.div>
             
             {/* Physics-based animated hero text */}
             <motion.h1
@@ -90,15 +113,37 @@ const Home = () => {
                 e.currentTarget.style.transform = '';
               }}
             >
-              <span className="text-gradient block">Sky Star</span>
+              <span className="text-gradient block bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">Sky Star</span>
             </motion.h1>
             
-            <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed">
+            <motion.p 
+              className="text-xl md:text-2xl text-gray-600 mb-6 max-w-4xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+            >
               We create intelligent solutions that revolutionize how businesses operate, 
               connect, and grow in the digital age through cutting-edge AI technology.
-            </p>
+            </motion.p>
             
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            {/* Tech Rotator Component */}
+            <div className="mb-16">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.5 }}
+                className="flex justify-center"
+              >
+                <TechRotator />
+              </motion.div>
+            </div>
+            
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-6 justify-center"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
+            >
               <motion.div
                 whileHover={{ scale: 1.07, y: -4, boxShadow: '0 8px 32px 0 rgba(80,80,200,0.18)' }}
                 whileTap={{ scale: 0.97, y: 2 }}
@@ -110,7 +155,7 @@ const Home = () => {
                   className="premium-button inline-flex items-center px-10 py-5 text-white rounded-2xl font-semibold text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
                 >
                   Explore Our Work
-                  <ArrowRight className="ml-3 h-6 w-6" />
+                  <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </motion.div>
               <motion.div
@@ -126,8 +171,27 @@ const Home = () => {
                   Start Your Project
                 </Link>
               </motion.div>
-            </div>
+            </motion.div>
           </div>
+          
+          {/* Scroll indicator */}
+          {/* <motion.div 
+            className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, y: [0, 10, 0] }}
+            transition={{ delay: 1.5, duration: 1.5, repeat: Infinity }}
+          >
+            <div className="flex flex-col items-center">
+              <span className="text-gray-500 text-sm mb-2">Scroll to explore</span>
+              <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center pt-1">
+                <motion.div 
+                  className="w-1.5 h-1.5 bg-gray-400 rounded-full"
+                  animate={{ y: [0, 15, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                />
+              </div>
+            </div>
+          </motion.div> */}
         </div>
       </section>
 
@@ -190,6 +254,27 @@ const Home = () => {
                 description: 'Autonomous AI agents that handle complex business processes end-to-end without human intervention.',
                 features: ['Process Automation', 'Decision Making', 'Smart Workflows'],
                 gradient: 'premium-gradient-blue',
+              },
+              {
+                icon: Code2,
+                title: 'WebApp Development',
+                description: 'Robust, scalable, and modern web applications tailored to your business needs.',
+                features: ['Responsive Design', 'API Integration', 'Performance Optimization'],
+                gradient: 'premium-gradient-purple',
+              },
+              {
+                icon: Smartphone,
+                title: 'Mobile App Development',
+                description: 'Native and cross-platform mobile apps for iOS and Android, built for performance and usability.',
+                features: ['iOS & Android', 'Cross-Platform', 'App Store Deployment'],
+                gradient: 'premium-gradient',
+              },
+              {
+                icon: ServerCog,
+                title: 'DevOps Implementation',
+                description: 'Automated CI/CD pipelines, cloud infrastructure, and monitoring for reliable deployments.',
+                features: ['CI/CD Automation', 'Cloud Infrastructure', 'Monitoring & Alerts'],
+                gradient: 'premium-gradient-alt',
               },
             ].map((service, index) => {
               const IconComponent = service.icon;
@@ -316,6 +401,9 @@ const Home = () => {
 
       {/* Technology Carousel */}
       <TechnologyCarousel />
+
+      {/* Client Carousel */}
+      <ClientCarousel />
 
       {/* Why Choose Us Section */}
       <section className="py-24 bg-premium-light">

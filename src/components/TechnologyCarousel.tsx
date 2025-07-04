@@ -8,7 +8,7 @@ const techImages: Record<string, string> = {
   'MongoDB': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
   'Redis': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg',
   'Firebase': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg',
-  'DynamoDB': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+  'DynamoDB': 'https://upload.wikimedia.org/wikipedia/commons/f/fd/DynamoDB.png',
   'ChatGPT': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/openai.svg',
   'Gemini': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/google.svg',
   'Ollama': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/ollama.svg',
@@ -20,6 +20,20 @@ const techImages: Record<string, string> = {
   'React Native': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
   'Flutter': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg',
   'WhatsApp API': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg',
+  'Node.js': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
+  'Express.js': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg',
+  'Python': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
+  'Java': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
+  'C#': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg',
+  'PHP': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',
+  'Ruby': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg',
+  'Go': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg',
+  'Swift': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg',
+  'Kotlin': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg',
+  'TypeScript': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
+  'Laravel': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg',
+  'Symfony': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/symfony/symfony-original.svg',
+  'Django': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-original.svg',
 };
 
 const technologies = [
@@ -41,6 +55,18 @@ const technologies = [
   { name: 'React Native', category: 'Mobile', gradient: 'premium-gradient-purple' },
   { name: 'Flutter', category: 'Mobile', gradient: 'premium-gradient' },
   { name: 'WhatsApp API', category: 'Integration', gradient: 'premium-gradient-alt' },
+  { name: 'Node.js', category: 'Backend', gradient: 'premium-gradient-purple' },
+  { name: 'Express.js', category: 'Backend', gradient: 'premium-gradient' },
+  { name: 'Python', category: 'Backend', gradient: 'premium-gradient-alt' },
+  { name: 'Java', category: 'Backend', gradient: 'premium-gradient-blue' },
+  { name: 'C#', category: 'Backend', gradient: 'premium-gradient-purple' },
+  { name: 'PHP', category: 'Backend', gradient: 'premium-gradient' },
+  { name: 'Ruby', category: 'Backend', gradient: 'premium-gradient-alt' },
+  { name: 'Go', category: 'Backend', gradient: 'premium-gradient-blue' },
+  { name: 'Swift', category: 'Backend', gradient: 'premium-gradient-purple' },
+  { name: 'Kotlin', category: 'Backend', gradient: 'premium-gradient' },
+  { name: 'TypeScript', category: 'Backend', gradient: 'premium-gradient-alt' },
+  { name: 'Laravel', category: 'Backend', gradient: 'premium-gradient-blue' },
 ];
 
 // Duplicate the technologies array for seamless loop
@@ -64,7 +90,7 @@ const TechnologyCarousel = () => {
       </div>
 
       <div className="relative">
-        <div className="flex animate-scroll-left space-x-8">
+        <div className="flex animate-scroll-right space-x-8">
           {duplicatedTechnologies.map((tech, index) => {
             const [ref, inView] = useInView<HTMLDivElement>({ threshold: 0.15 });
             const delay = (index % technologies.length) * 80;
@@ -82,7 +108,7 @@ const TechnologyCarousel = () => {
                 }}
               >
                 <div className="flex flex-col items-center space-y-4">
-                  <div className={`${tech.gradient} p-4 rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 bg-white/80"`}>
+                  <div className={`${tech.gradient} p-4 rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 bg-white/80`}>
                     <img
                       src={techImages[tech.name]}
                       alt={tech.name}

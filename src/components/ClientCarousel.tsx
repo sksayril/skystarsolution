@@ -8,12 +8,12 @@ const clients = [
   },
   {
     name: 'Microsoft',
-    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoft/microsoft-original.svg',
+    logo: 'https://cdnlogo.com/logos/m/6/microsoft.svg',
     url: 'https://microsoft.com',
   },
   {
     name: 'Amazon',
-    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+    logo: 'https://static.vecteezy.com/system/resources/previews/014/018/563/non_2x/amazon-logo-on-transparent-background-free-vector.jpg',
     url: 'https://aws.amazon.com',
   },
   {
@@ -33,7 +33,7 @@ const clients = [
   },
   {
     name: 'Spotify',
-    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spotify/spotify-original.svg',
+    logo: 'https://www.logo.wine/a/logo/Spotify/Spotify-Icon-Logo.wine.svg',
     url: 'https://spotify.com',
   },
   {
@@ -57,7 +57,7 @@ const ClientCarousel: React.FC = () => {
         </p>
       </div>
       <div className="relative">
-        <div className="flex animate-scroll-left space-x-12">
+        <div className="flex animate-scroll-left space-x-8">
           {duplicatedClients.map((client, idx) => (
             <a
               key={client.name + idx}

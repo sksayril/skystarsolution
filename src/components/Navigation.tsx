@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Zap } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,19 +15,20 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-gradient-to-br from-black/80 via-gray-900/80 to-black/70 backdrop-blur-xl border-b border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.18)] opacity-90">
+    <nav className="fixed top-0 w-full z-50 bg-white shadow-md border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <Link to="/" className="flex items-center space-x-3 group">
-            <div className="bg-gradient-to-tr from-yellow-300 via-yellow-400 to-yellow-500 p-3 rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
-              <Zap className="h-7 w-7 text-black drop-shadow-[0_0_6px_rgba(255,221,51,0.7)]" />
-            </div>
-            <div>
-              <span className="text-2xl font-extrabold font-display text-white tracking-tight group-hover:text-yellow-200 transition-colors duration-300 drop-shadow-[0_1px_8px_rgba(255,221,51,0.2)]">
+            {/* <div className="bg-gradient-to-tr from-yellow-300 via-yellow-400 to-yellow-500 p-3 rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+              
+            </div> */}
+            <span className="flex items-center">
+              <img src="/skystarlogo.png" alt="Sky Star Logo" className="h-12 w-12 mr-2 drop-shadow" />
+              <span className="text-2xl font-extrabold font-display text-gray-900 tracking-tight group-hover:text-yellow-600 transition-colors duration-300">
                 Sky Star
               </span>
-              <div className="text-xs text-gray-400 font-medium group-hover:text-yellow-100 transition-colors duration-300">AI Solutions</div>
-            </div>
+            </span>
+            <div className="text-xs text-gray-400 font-medium group-hover:text-yellow-100 transition-colors duration-300">AI Solutions</div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -39,7 +40,7 @@ const Navigation = () => {
                 className={`relative px-6 py-3 rounded-xl text-base font-semibold transition-all duration-300 overflow-hidden group
                   ${location.pathname === item.path
                     ? 'text-yellow-300'
-                    : 'text-white/80 hover:text-yellow-200'}
+                    : 'text-gray-900 hover:text-yellow-400'}
                 `}
               >
                 <span className="relative z-10 group-hover:scale-105 transition-transform duration-300">
@@ -61,7 +62,7 @@ const Navigation = () => {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-3 rounded-xl text-white/80 hover:text-yellow-300 hover:bg-white/10 backdrop-blur-sm transition-all duration-200"
+            className="md:hidden p-3 rounded-xl text-gray-900 hover:text-yellow-400 hover:bg-white/10 backdrop-blur-sm transition-all duration-200"
             aria-label="Toggle menu"
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -80,7 +81,7 @@ const Navigation = () => {
                   className={`block px-6 py-4 rounded-xl text-lg font-semibold transition-all duration-300 relative overflow-hidden group
                     ${location.pathname === item.path
                       ? 'text-yellow-300'
-                      : 'text-white/80 hover:text-yellow-200'}
+                      : 'text-gray-900 hover:text-yellow-400'}
                   `}
                 >
                   <span className="relative z-10 group-hover:scale-105 transition-transform duration-300">{item.label}</span>
